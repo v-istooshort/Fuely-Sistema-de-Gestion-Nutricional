@@ -26,13 +26,82 @@
 
 ### Caso de Uso CU01: Registrar Datos Biométricos
 
+- **Alcance:** Sistema de Control Nutricional Fuely.
+- **Nivel:** Objetivo del Usuario.
+- **Actor Principal:** Usuario Principal.
+- **Stakeholders e Intereses:**
+  - *Usuario Principal:* Desea ingresar su información corporal de manera precisa y sencilla para obtener una estimación calórica personalizada.
+  - *Sistema:* Requiere datos numéricos válidos dentro de rangos biológicos coherentes para evitar cálculos erróneos de TMB.
+- **Precondiciones:** El sistema se encuentra ejecutando y la interfaz de perfil está accesible.
+- **Garantía de Éxito (Postcondiciones):** Los datos biométricos (edad, sexo, peso, estatura, nivel de actividad) quedan almacenados en la entidad Usuario y se calcula la Tasa Metabólica Basal (TMB).
+- **Principal Escenario de Éxito:**
+  1. El Usuario Principal accede a la sección de Perfil de Usuario.
+  2. El Usuario Principal ingresa su edad (años), sexo (masculino/femenino), peso corporal ($kg$), estatura ($cm$) y selecciona su nivel de actividad física (sedentario, ligero, moderado, intenso).
+  3. El Usuario Principal solicita guardar los datos ingresados.
+  4. El Sistema valida que los campos estén completos y dentro de los rangos numéricos permitidos (ej. peso entre 20 kg y 300 kg; estatura entre 100 cm y 250 cm).
+  5. El Sistema calcula la Tasa Metabólica Basal (TMB) utilizando la fórmula de Mifflin-St Jeor.
+  6. El Sistema actualiza el perfil del usuario y despliega un mensaje de confirmación con el valor de TMB resultante.
+- **Extensiones (o Flujos Alternativos):**
+  - *4a. Datos fuera de rango o incompletos:*
+    1. El Sistema detecta un valor no numérico, negativo o fuera de rango biológico (ej. edad = 0 o peso = -5).
+    2. El Sistema resalta el campo con error y muestra una notificación: *"Por favor, ingrese un valor biométrico válido."*
+    3. El Usuario Principal corrige el valor y retoma el paso 3.
+- **Requerimientos Especiales:** Interfaz con controles numéricos adecuados y mensajes de validación instantáneos.
+- **Tecnología y Lista de Variaciones de Datos:** Entrada mediante teclado o selector de rango (*spinner/slider*).
+- **Frecuencia de Ocurrencia:** Baja (al crear la cuenta o al registrar cambios de peso significativos).
+
 ---
 
 ### Caso de Uso CU02: Configurar Objetivo Nutricional
 
+- **Alcance:** Sistema de Control Nutricional Fuely.
+- **Nivel:** Objetivo del Usuario.
+- **Actor Principal:** Usuario Principal.
+- **Stakeholders e Intereses:**
+  - *Usuario Principal:* Quiere definir su meta física (pérdida de peso, mantenimiento o ganancia muscular) y obtener la distribución automática de macronutrientes.
+- **Precondiciones:** CU01 (Registrar Datos Biométricos) completado previamente; la TMB debe estar calculada.
+- **Garantía de Éxito (Postcondiciones):** Queda registrado el Gasto Energético Total (GET), las calorías meta diarias y el reparto gramo a gramo de proteínas, carbohidratos y grasas.
+- **Principal Escenario de Éxito:**
+  1. El Usuario Principal selecciona la opción "Configurar Meta Nutricional".
+  2. El Sistema presenta los tres objetivos disponibles: Pérdida de Grasa (Déficit Calórico), Mantenimiento (Eucalórica) y Ganancia Muscular (Superávit Calórico).
+  3. El Usuario Principal selecciona el objetivo deseado.
+  4. El Sistema calcula el Gasto Energético Total (GET) aplicando el factor de actividad física sobre la TMB.
+  5. El Sistema ajusta las calorías totales agregando o sustrayendo el margen energético correspondiente (ej. -500 kcal para déficit, +300 kcal para superávit).
+  6. El Sistema distribuye el porcentaje de macronutrientes según guías estándar (ej. 30% Proteínas, 40% Carbohidratos, 30% Grasas) y convierte los porcentajes a gramos absolutos diarios.
+  7. El Sistema guarda la meta nutricional y presenta el desglose al usuario.
+- **Extensiones (o Flujos Alternativos):**
+  - *3a. Personalización avanzada de distribución de macronutrientes:*
+    1. El Usuario Principal elige ajustar manualmente los porcentajes de macronutrientes.
+    2. El Sistema verifica que la suma de porcentajes sea exactamente 100%.
+    3. Si la suma difiere de 100%, el Sistema advierte: *"La suma de macronutrientes debe ser exactamente 100%."* y no permite guardar hasta corregir.
+- **Requerimientos Especiales:** Cálculo exacto de calorías por gramo (Proteína: 4 kcal/g, Carbohidrato: 4 kcal/g, Grasa: 9 kcal/g).
+- **Tecnología y Lista de Variaciones de Datos:** Selección mediante botones radio o deslizadores proporcionales.
+- **Frecuencia de Ocurrencia:** Media (se ajusta según la fase de entrenamiento o evolución física).
+
 ---
 
 ### Caso de Uso CU03: Buscar Alimento en Catálogo
+
+- **Alcance:** Sistema de Control Nutricional Fuely.
+- **Nivel:** Objetivo del Usuario.
+- **Actor Principal:** Usuario Principal.
+- **Stakeholders e Intereses:**
+  - *Usuario Principal:* Requiere localizar rápidamente un ingrediente o platillo en el catálogo para conocer su información nutrimental base o usarlo en el diario.
+- **Precondiciones:** El catálogo de alimentos cuenta con registros iniciales almacenados.
+- **Garantía de Éxito (Postcondiciones):** Se despliega el listado de alimentos coincidentes con sus valores por cada 100 g base.
+- **Principal Escenario de Éxito:**
+  1. El Usuario Principal ingresa al módulo de Catálogo de Alimentos.
+  2. El Usuario Principal escribe el nombre o término de búsqueda en la barra de consulta (ej. "pechuga de pollo").
+  3. El Sistema filtra el catálogo en tiempo real buscando coincidencias en la denominación o categoría del alimento.
+  4. El Sistema muestra una lista de resultados especificando: Nombre, Categoría (Proteínas, Carbohidratos, Grasas, Verduras, Frutas), y la densidad nutrimental por 100 g (Calorías, Proteínas, Carbohidratos, Grasas).
+  5. El Usuario Principal selecciona un alimento de la lista para ver su detalle completo.
+- **Extensiones (o Flujos Alternativos):**
+  - *3a. No se encuentran coincidencias:*
+    1. El Sistema no detecta alimentos que coincidan con la palabra ingresada.
+    2. El Sistema muestra el mensaje: *"No se encontraron alimentos con esa denominación."* y sugiere la opción de ejecutar el **CU07 (Registrar Alimento Personalizado)**.
+- **Requerimientos Especiales:** Búsqueda ágil en memoria o base de datos con tiempo de respuesta < 100 ms.
+- **Tecnología y Lista de Variaciones de Datos:** Filtro por texto (*string matching*) e iconos por categoría alimenticia.
+- **Frecuencia de Ocurrencia:** Alta (múltiples veces al día).
 
 ---
 
@@ -65,6 +134,29 @@
 ---
 
 ### Caso de Uso CU05: Registrar Comida en Diario
+
+- **Alcance:** Sistema de Control Nutricional Fuely.
+- **Nivel:** Objetivo del Usuario.
+- **Actor Principal:** Usuario Principal.
+- **Stakeholders e Intereses:**
+  - *Usuario Principal:* Desea asociar un alimento calculado a un tiempo de comida específico para llevar su bitácora del día.
+- **Precondiciones:** El cálculo por gramaje (CU04) ha sido realizado y se ha seleccionado la fecha actual o una fecha válida.
+- **Garantía de Éxito (Postcondiciones):** El alimento con sus gramos y macronutrientes calculados queda anexado al tiempo de comida correspondiente en el diario diario.
+- **Principal Escenario de Éxito:**
+  1. El Usuario Principal elige la opción "Agregar al Diario" tras realizar un cálculo o desde el propio Diario.
+  2. El Sistema presenta la selección de tiempos de comida: Desayuno, Comida, Cena o Colación.
+  3. El Usuario Principal selecciona el tiempo de comida destino.
+  4. El Usuario Principal confirma el registro.
+  5. El Sistema guarda la entrada alimenticia vinculándola a la fecha seleccionada y al tiempo de comida elegido.
+  6. El Sistema recalcula los totales acumulados del tiempo de comida y del día completo.
+  7. El Sistema retorna al diario mostrando la nueva entrada insertada.
+- **Extensiones (o Flujos Alternativos):**
+  - *5a. Error de persistencia en la base de datos:*
+    1. El Sistema sufre una interrupción al guardar la transacción.
+    2. El Sistema revierte la operación (*rollback*), notifica al usuario: *"No se pudo guardar la comida. Intente de nuevo."* y conserva los datos en pantalla para reintentar.
+- **Requerimientos Especiales:** Consistencia transaccional ACID en la base de datos local.
+- **Tecnología y Lista de Variaciones de Datos:** Listas desplegables o tarjetas seleccionables por tiempo de comida.
+- **Frecuencia de Ocurrencia:** Entre 3 y 6 veces al día por usuario.
 
 ---
 
