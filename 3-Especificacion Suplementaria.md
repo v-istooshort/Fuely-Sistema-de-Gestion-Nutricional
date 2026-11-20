@@ -1,13 +1,5 @@
 # 3. Especificación Suplementaria (Metodología FURPS+)
 
-| Atributo | Especificación |
-| :--- | :--- |
-| **Usabilidad** | El cálculo de porciones y resumen diario debe responder en un tiempo ≤200 ms. |
-| **Fiabilidad** | La base de datos debe mantener consistencia transaccional al guardar o modificar registros en el diario. |
-| **Arquitectura** | Diseño basado en capas simples o MVC (Modelo-Vista-Controlador), separando la lógica de cálculo metabólico. |
-| **Restricciones Metodológicas** | Desarrollo bajo paradigma Orientado a Objetos. |
-# 3. Especificación Suplementaria (Metodología FURPS+)
-
 La Especificación Suplementaria captura todos los requisitos del sistema que no están contenidos en los casos de uso, enfocándose fundamentalmente en los atributos de calidad no funcionales bajo el modelo **FURPS+** (Funcionalidad, Usabilidad, Confiabilidad, Rendimiento y Soportabilidad, más las restricciones auxiliares).
 
 ## 3.1 Funcionalidad (Functionality)
@@ -36,25 +28,25 @@ La Especificación Suplementaria captura todos los requisitos del sistema que no
 
 ## 3.5 Soportabilidad (Supportability)
 - **Arquitectura Orientada a Objetos (POO):** El sistema debe estar diseñado bajo el patrón **Modelo-Vista-Controlador (MVC)** o Arquitectura en Capas, garantizando un desacoplamiento estricto entre la interfaz de usuario, la lógica metabólica de dominio y la capa de persistencia.
-- **Mantenibilidad del Código:** La base de código debe seguir las convenciones estándar de desarrollo OO (ej. Clean Code, principios SOLID), permitiendo que un nuevo desarrollador comprenda la estructura en menos de 2 días.
-- **Extensibilidad de Catálogo:** La capa de datos debe estar estructurada de modo que sea posible importar nuevas tablas nutrimentales (ej. archivos CSV o JSON de bases de datos oficiales) sin necesidad de recompilar la lógica de dominio.
-- **Independencia de Plataforma:** La lógica de cálculo de dominio debe estar aislada de librerías nativas del sistema operativo para facilitar su migración entre Java, Python o entornos web.
+- **Mantenibilidad del Código:** La base de código debe seguir las convenciones estándar de desarrollo OO, permitiendo que un nuevo desarrollador comprenda la estructura en menos de 2 días.
+- **Extensibilidad de Catálogo:** La capa de datos debe estar estructurada de modo que sea posible importar nuevas tablas nutrimentales sin necesidad de recompilar la lógica de dominio.
+- **Independencia de Plataforma:** La lógica de cálculo de dominio debe estar aislada de librerías nativas del sistema operativo para facilitar su migración.
 
 ## 3.6 Restricciones Auxiliares (+)
 
 ### Requisitos de Implementación
-- **Lenguaje de Programación:** Desarrollo implementado en un lenguaje fuertemente orientado a objetos (Java 17+ o Python 3.10+ con tipado estático).
-- **Persistencia de Datos:** Utilización de un motor de base de datos relacional ligero y embebido (SQLite) o persistencia basada en objetos (ORM / DAO).
-- **Control de Versiones:** Repositorio administrado mediante Git con una estrategia de ramas ordenada (*GitFlow* o *Feature Branches*).
+- **Lenguaje de Programación:** Desarrollo implementado en un lenguaje fuertemente orientado a objetos.
+- **Persistencia de Datos:** Utilización de un motor de base de datos relacional ligero y embebidoo persistencia basada en objetos.
+- **Control de Versiones:** Repositorio administrado mediante Git con una estrategia de ramas ordenada.
 
 ### Requisitos de Interfaz
-- **Restricción de Entradas:** Los campos de gramaje únicamente aceptarán dígitos numéricos y un separador decimal (punto o coma según la localización).
-- **Retroalimentación Visual:** Cualquier acción de guardado, actualización o eliminación debe ser acompañada de un mensaje modal o *toast* informativo de breve duración.
+- **Restricción de Entradas:** Los campos de gramaje únicamente aceptarán dígitos numéricos y un separador decimal.
+- **Retroalimentación Visual:** Cualquier acción de guardado, actualización o eliminación debe ser acompañada de un mensaje informativo de breve duración.
 
 ### Requisitos de Operaciones
-- **Despliegue Local:** La aplicación debe funcionar de manera 100% autónoma y *offline*, sin depender de conexión a servidores remotos ni APIs externas para sus funciones centrales.
-- **Carga de Datos Semilla:** El sistema debe incluir un script de instalación que retrace y pueble automáticamente el catálogo base con al menos 50 alimentos comunes y su información por 100 g.
+- **Despliegue Local:** La aplicación debe funcionar de manera autónoma y *offline*, sin depender de conexión a servidores remotos ni APIs externas para sus funciones centrales.
+- **Carga de Datos:** El sistema debe incluir un script de instalación que cargue el catálogo base con al menos 50 alimentos comunes y su información por 100 g.
 
 ### Requisitos Legales y Normativos
-- **Aviso de Exención de Responsabilidad Médica (*Disclaimer*):** El sistema debe incluir una leyenda visible indicando que Fuely es una herramienta de apoyo nutricional y de acondicionamiento físico, y no sustituye la prescripción o diagnóstico de un profesional de la salud o nutriólogo clínico.
+- **Aviso de Exención de Responsabilidad Médica (*Disclaimer*):** El sistema debe incluir una leyenda visible indicando que Fuely es una herramienta de apoyo nutricional y de acondicionamiento físico, lo cual no sustituye la prescripción o diagnóstico de un profesional de la salud o nutriólogo clínico.
 - **Fuentes de Datos Certificadas:** Los valores nutrimentales base de la aplicación deben estar respaldados explícitamente en tablas del Sistema Mexicano de Alimentos Equivalentes (SMAE), la Secretaría de Salud o la FDA.

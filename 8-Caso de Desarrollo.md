@@ -12,3 +12,27 @@ El Proceso Unificado se adapta al proyecto Fuely bajo un enfoque ágil (Agile UP
 | **Implementación** | Programación orientada a objetos en capas con pruebas unitarias integradas. | Alta / Rigurosa |
 | **Pruebas** | Pruebas unitarias automatizadas de la lógica metabólica y pruebas de aceptación de usuario en UI. | Alta |
 | **Gestión de Configuración** | Control de versiones estricto con Git y entregas incrementales por iteración. | Alta |
+
+## 8.2 Mapeo de Artefactos y Prácticas Requeridas
+
+```
+MAPEO DE ARTEFACTOS UP ÁGIL - PROYECTO FUELY
+┌──────────────────────────────────────────────────────────────────┐
+│ FASE DE INICIO (INCEPTION)                                       │
+│  ├── Visión y Caso de Negocio (Documento de Propuesta)          │
+│  ├── Modelo de Casos de Uso (Especificación Completa CU01-CU08)  │
+│  ├── Especificación Suplementaria (Matriz FURPS+)                │
+│  ├── Glosario y Diccionario de Datos                             │
+│  ├── Lista de Riesgos y Plan de Gestión                         │
+│  ├── Plan de Desarrollo y Caso de Desarrollo                     │
+│  └── Diagrama de Clases de Dominio UML                     │
+└──────────────────────────────────────────────────────────────────┘
+                                │
+                                ▼
+┌──────────────────────────────────────────────────────────────────┐
+│ FASES SIGUIENTES (ELABORACIÓN / CONSTRUCCIÓN / TRANSICIÓN)        │
+│  ├── Diagramas de Secuencia (Interacción entre Objetos)          │
+│  ├── Código Fuente Ejecutable (Capa UI, Controlador, Modelo, DAO)│
+│  └── Suite de Pruebas Unitarias e Integración                    │
+└──────────────────────────────────────────────────────────────────┘
+```

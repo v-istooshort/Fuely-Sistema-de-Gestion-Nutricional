@@ -19,7 +19,6 @@
 | **CU06** | Consultar Balance Diario | Diario Alimentario | *Fully Dressed* |
 | **CU07** | Registrar Alimento Personalizado | Catálogo Nutricional | *Fully Dressed* |
 | **CU08** | Consultar Historial Nutricional | Historial y Seguimiento | *Fully Dressed* |
-
 ---
 
 ### 2.3 Especificación Detallada de Casos de Uso
@@ -162,11 +161,78 @@
 
 ### Caso de Uso CU06: Consultar Balance Diario
 
+- **Alcance:** Sistema de Control Nutricional Fuely.
+- **Nivel:** Objetivo del Usuario.
+- **Actor Principal:** Usuario Principal.
+- **Stakeholders e Intereses:**
+  - *Usuario Principal:* Necesita visualizar de forma rápida cuánto ha consumido y cuánto le resta por consumir en el día para no exceder su meta.
+- **Precondiciones:** Se ha configurado la meta nutricional (CU02).
+- **Garantía de Éxito (Postcondiciones):** Se presenta una vista resumida del avance calórico y de macronutrientes del día seleccionado.
+- **Principal Escenario de Éxito:**
+  1. El Usuario Principal accede a la pantalla principal del Diario.
+  2. El Sistema recupera todas las entradas registradas para la fecha seleccionada.
+  3. El Sistema suma el total de calorías, proteínas, carbohidratos y grasas consumidas hasta el momento.
+  4. El Sistema compara los acumulados contra la Meta Nutricional Diaria del usuario.
+  5. El Sistema calcula el remanente calórico y de macronutrientes:
+     $$\text{Remanente} = \text{Meta}_{\text{diaria}} - \text{Consumido}_{\text{acumulado}}$$
+  6. El Sistema despliega barras de progreso numéricas y métricas visuales del balance energético (Calorías Consumidas vs. Calorías Restantes).
+- **Extensiones (o Flujos Alternativos):**
+  - *4a. El usuario supera la meta diaria (Superávit no planificado / Exceso):*
+    1. El Sistema detecta que el valor consumido excede la meta diaria.
+    2. El Remanente se calcula como valor negativo y el Sistema aplica un estilo de alerta (ej. indicador numérico destacado) notificando: *"Ha superado su meta calórica por X kcal."*
+- **Requerimientos Especiales:** Tiempo de renderizado de la pantalla $\le 200\text{ ms}$.
+- **Tecnología y Lista de Variaciones de Datos:** Componentes de interfaz reactivos (barras de avance numéricas).
+- **Frecuencia de Ocurrencia:** Alta (múltiples consultas al día).
 
 ---
 
 ### Caso de Uso CU07: Registrar Alimento Personalizado
 
+- **Alcance:** Sistema de Control Nutricional Fuely.
+- **Nivel:** Objetivo del Usuario.
+- **Actor Principal:** Usuario Principal.
+- **Stakeholders e Intereses:**
+  - *Usuario Principal:* Quiere agregar un alimento comercial o receta propia que no existe en el catálogo base de la aplicación.
+- **Precondiciones:** El usuario dispone de la tabla nutrimental del producto (valores por 100 g).
+- **Garantía de Éxito (Postcondiciones):** El nuevo alimento queda registrado en el catálogo del usuario y disponible para futuros cálculos.
+- **Principal Escenario de Éxito:**
+  1. El Usuario Principal presiona el botón "Agregar Alimento Personalizado" en el Catálogo.
+  2. El Sistema presenta un formulario pidiendo: Nombre del Alimento, Categoría, y datos nutrimentales base por cada 100 g (Calorías, Proteínas, Carbohidratos, Grasas).
+  3. El Usuario Principal ingresa la información requerida.
+  4. El Usuario Principal guarda el registro.
+  5. El Sistema valida que los campos estén completos, que las calorías sean coherentes con la suma de los macronutrientes expresados y que no sea un nombre duplicado.
+  6. El Sistema almacena el nuevo alimento etiquetándolo como "Personalizado por Usuario".
+  7. El Sistema notifica: *"Alimento guardado con éxito en su catálogo."*
+- **Extensiones (o Flujos Alternativos):**
+  - *5a. Incoherencia matemática en datos ingresados:*
+    1. El Sistema detecta que las calorías declaradas difieren significativamente ($> 15\%$) del cálculo teórico ($\text{Proteína}\times 4 + \text{Carbohidrato}\times 4 + \text{Grasa}\times 9$).
+    2. El Sistema advierte al usuario sobre la discrepancia y sugiere un auto-cálculo de calorías base.
+    3. El Usuario Principal acepta la corrección sugerida o confirma sus valores manuales.
+- **Requerimientos Especiales:** Formulario estructurado con validadores de rango.
+- **Tecnología y Lista de Variaciones de Datos:** Formulario de captura estándar con persistencia relacional.
+- **Frecuencia de Ocurrencia:** Baja a Media (ocasional cuando se adquieren productos nuevos).
+
 ---
 
 ### Caso de Uso CU08: Consultar Historial Nutricional
+
+- **Alcance:** Sistema de Control Nutricional Fuely.
+- **Nivel:** Objetivo del Usuario.
+- **Actor Principal:** Usuario Principal.
+- **Stakeholders e Intereses:**
+  - *Usuario Principal:* Desea revisar su apego a la dieta en días o semanas anteriores para evaluar sus resultados físicos.
+- **Precondiciones:** Existen registros de comidas almacenados en fechas pasadas.
+- **Garantía de Éxito (Postcondiciones):** El sistema despliega el desglose del diario y el balance calórico de la fecha histórica seleccionada.
+- **Principal Escenario de Éxito:**
+  1. El Usuario Principal ingresa al módulo de Historial.
+  2. El Sistema presenta un selector de fecha o calendario.
+  3. El Usuario Principal selecciona un día anterior específico.
+  4. El Sistema recupera la bitácora alimentaria de esa fecha (alimentos, gramos, tiempos de comida y balance final frente a la meta vigente en ese día).
+  5. El Sistema despliega el resumen histórico completo de solo lectura.
+- **Extensiones (o Flujos Alternativos):**
+  - *4a. Sin registros para la fecha seleccionada:*
+    1. El Sistema no encuentra entradas para la fecha consultada.
+    2. El Sistema muestra el mensaje: *"No hay registros alimentarios guardados para la fecha seleccionada."*.
+- **Requerimientos Especiales:** Vista de solo lectura para evitar alterations accidentales a registros pasados.
+- **Tecnología y Lista de Variaciones de Datos:** Selector de fecha (*DatePicker*).
+- **Frecuencia de Ocurrencia:** Media (1 o 2 veces por semana).
