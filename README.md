@@ -10,11 +10,11 @@ Este repositorio contiene la especificación formal del sistema estructurada baj
 
 ```text
 .
-├── README.md   # Presentación del repositorio
-└── img/
-    ├── Caso Uso.png
-    └── Dominio.png                           
+├── README.md   # Presentación del repositorio                          
 └── docs/
+    ├── img/
+        ├── Caso Uso.png
+        └── Dominio.png 
     ├── 00-Propuesta.md 
     ├── 01-Vision.md 
     ├── 02-Casos-de-Uso.md 
@@ -63,8 +63,8 @@ Este repositorio contiene la especificación formal del sistema estructurada baj
    - Distribución temporal por fases UP e hitos del proyecto.
 
 7. **[Caso de Desarrollo](<./docs/8-Caso de Desarrollo.md>)**
-   Proceso Unificado adaptado al proyecto Fuely bajo un enfoque ágil (Agile UP).
+   - Proceso Unificado adaptado al proyecto Fuely bajo un enfoque ágil (Agile UP).
 
 8. **[Diagramas UML](<./docs/9-Modelado y Diagramas UML.md>)**
-   Diagramas de Casos de Uso y Modelo de Dominio conceptual.
+   - Diagramas de Casos de Uso y Modelo de Dominio conceptual.
 ---
