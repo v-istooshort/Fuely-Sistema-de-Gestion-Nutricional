@@ -10,27 +10,32 @@ Este repositorio contiene la especificación formal del sistema estructurada baj
 
 ```text
 .
-├── README.md                              # Presentación del repositorio
+├── README.md   # Presentación del repositorio
+└── img/
+    ├── Caso Uso.png
+    └── Dominio.png                           
 └── docs/
     ├── 00-Propuesta.md 
     ├── 01-Vision.md 
     ├── 02-Casos-de-Uso.md 
     ├── 03-Especificacion-FURPS.md 
     ├── 04-Glosario-y-Diccionario.md 
-    ├── 05-Matriz-de-Riesgos.md 
-    ├── 06-Plan-de-Desarrollo.md 
-    └── 07-Diagramas-UML.md
+    ├── 05-Matriz-de-Riesgos.md
+    ├── 06-Plan-de-Iteraciones.md
+    ├── 07-Plan-de-Desarrollo.md
+    ├── 08-Caso-de-Desarrollo.md
+    └── 09-Diagramas-UML.md
 ```
 
 ---
 
 ## 📄 Índice de Artefactos del Proyecto
 
-1. **[Visión del Proyecto y Caso de Negocio]**
+1. **[Visión del Proyecto y Caso de Negocio](<./docs/1-Vision y Caso de Negocio.md>)**
    - Justificación del problema y objetivos del sistema.
    - Perfil de usuarios y *stakeholders*.
 
-2. **[Modelo de Casos de Uso]**
+2. **[Modelo de Casos de Uso](<./docs/2-Modelo de Casos de Uso.md>)**
    - **CU-01:** Registrar Usuario y Crear Perfil Fisiológico.
    - **CU-02:** Calcular Metas Nutricionales Automáticas.
    - **CU-03:** Buscar y Consultar Alimentos en el Catálogo.
@@ -40,7 +45,7 @@ Este repositorio contiene la especificación formal del sistema estructurada baj
    - **CU-07:** Crear y Personalizar Receta / Platillo.
    - **CU-08:** Configurar Recordatorios y Notificaciones de Comida.
 
-3. **[Especificación Suplementaria]**
+3. **[Especificación Suplementaria](<./docs/3-Especificacion Suplementaria.md>)**
    - **F (Functionality):** Seguridad, auditoría, autenticación y persistencia.
    - **U (Usability):** Interfaz intuitiva, diseño adaptativo y accesibilidad.
    - **R (Reliability):** Disponibilidad (99.5%), tolerancia a fallos y recuperación de datos.
@@ -48,15 +53,18 @@ Este repositorio contiene la especificación formal del sistema estructurada baj
    - **S (Supportability):** Arquitectura modular en capas, mantenibilidad y soporte multiplataforma.
    - **+ (Restricciones):** Cumplimiento legal (protección de datos de salud), interfaces externas y licencias.
 
-4. **[Glosario]**
-   - Definición de términos técnicos y nutricionales (TMB, GET, Macronutrientes, Gramaje, Equivalentes).
+4. **[Glosario](<./docs/4-Glosario.md>)**
+   - Definición de términos técnicos y nutricionales.
 
-5. **[Matriz y Lista de Riesgos]**
+5. **[Matriz y Lista de Riesgos](<./docs/5-Lista de Riesgos y Plan de Gestion de Riesgos.md>)**
    - Evaluación de impacto, probabilidad y planes de contingencia para riesgos técnicos y de negocio.
 
-6. **[Plan de Desarrollo y Planificación de Iteraciones]**
-   - Distribución temporal por fases UP (Inicio, Elaboración, Construcción, Transición) e hitos del proyecto.
+6. **[Planificación de Iteraciones y](<./docs/6-Plan de Iteracion.md>) [Plan de Desarrollo](<./docs/7-Plan de Fases y Plan de Desarrollo de Software.md>)**
+   - Distribución temporal por fases UP e hitos del proyecto.
 
-7. **[Diagramas UML]**
+7. **[Caso de Desarrollo](<./docs/8-Caso de Desarrollo.md>)**
+   Proceso Unificado adaptado al proyecto Fuely bajo un enfoque ágil (Agile UP).
+
+8. **[Diagramas UML](<./docs/9-Modelado y Diagramas UML.md>)**
 
 ---
