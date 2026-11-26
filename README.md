@@ -66,5 +66,5 @@ Este repositorio contiene la especificación formal del sistema estructurada baj
    Proceso Unificado adaptado al proyecto Fuely bajo un enfoque ágil (Agile UP).
 
 8. **[Diagramas UML](<./docs/9-Modelado y Diagramas UML.md>)**
-
+   Diagramas de Casos de Uso y Modelo de Dominio conceptual.
 ---
