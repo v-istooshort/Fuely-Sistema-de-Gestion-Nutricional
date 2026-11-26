@@ -43,7 +43,8 @@ El **Modelo de Dominio** es una representación conceptual del mundo real que vi
 
 ---
 
-### 1.3 ![Modelo de Dominio](../img/Dominio.png)
+### 1.3 Modelo de Dominio
+![Modelo de Dominio](../img/Dominio.png)
 
 ---
 
@@ -66,4 +67,5 @@ El **Diagrama de Casos de Uso** establece el límite del sistema Fuely, identifi
 
 ---
 
-### 2.3 ![Diagrama de Casos de Uso](<../img/Caso Uso.png>)
+### 2.3 Diagrama de Casos de Uso
+![Diagrama de Casos de Uso](<../img/Caso Uso.png>)
