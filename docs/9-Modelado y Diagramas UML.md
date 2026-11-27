@@ -4,8 +4,6 @@ Este documento contiene el modelado visual del sistema **Fuely** mediante el **L
 
 ## 1. Modelo de Dominio
 
-El **Modelo de Dominio** es una representación conceptual del mundo real que visualiza las entidades significativas, sus atributos perceptibles y las asociaciones estructurales entre ellas, sin acoplamiento a clases de software, tecnologías de base de datos o componentes de interfaz.
-
 ### 1.1 Entidades del Dominio Fuely
 
 | Entidad | Descripción / Concepto de Negocio | Atributos Clave |
@@ -29,7 +27,7 @@ El **Modelo de Dominio** es una representación conceptual del mundo real que vi
   * **Tipo**: Asociación estructural.
   * **Regla**: Un usuario registra cero o muchos diarios alimentarios (un diario por cada día calendario).
 * **DiarioAlimentario (1) ◆──── (1..*) RegistroComida**:
-  * **Tipo**: Composición (*Todo-Parte Fuerte*).
+  * **Tipo**: Composición.
   * **Regla**: Las entradas de comida nacen y mueren con su diario alimentario correspondiente. Si se elimina un diario, sus registros asociados se destruyen.
 * **RegistroComida (0..*) ──── (1) Alimento**:
   * **Tipo**: Asociación simple.
